@@ -27,6 +27,7 @@ SRC_URI="
 	http://xorg.freedesktop.org/archive/individual/proto/renderproto-0.11.1.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/resourceproto-1.2.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/scrnsaverproto-1.2.2.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/proto/windowswmproto-1.0.4.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xcmiscproto-1.2.2.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xextproto-7.2.1.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xf86bigfontproto-1.2.0.tar.bz2
@@ -55,7 +56,7 @@ src_install() {
 	for d in *-*.*
 	do
 		pushd ${B}/$d
-		cyginstall dist_doc_DATA=
+		cyginstall dist_doc_DATA= pkgconfigdir='$(libdir)/pkgconfig'
 		newdoc ${S}/$d/COPYING ${d%-*}.COPYING
 #		newdoc ${S}/$d/README ${d%-*}.README
 		popd
