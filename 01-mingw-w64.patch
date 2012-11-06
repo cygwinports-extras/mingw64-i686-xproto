@@ -1,6 +1,17 @@
+--- xproto-7.0.23/Xfuncproto.h.in
++++ xproto-7.0.23/Xfuncproto.h.in
+@@ -83,7 +83,7 @@ in this Software without prior written authorization from The Open Group.
+ #endif /* GNUC >= 4 */
+ 
+ /* Added in X11R6.9, so available in any version of modular xproto */
+-#if defined(__GNUC__) && (__GNUC__ >= 4) && !defined(__CYGWIN__)
++#if defined(__GNUC__) && (__GNUC__ >= 4) && !defined(__CYGWIN__) && !defined(__MINGW32__)
+ # define _X_EXPORT      __attribute__((visibility("default")))
+ # define _X_HIDDEN      __attribute__((visibility("hidden")))
+ # define _X_INTERNAL    __attribute__((visibility("internal")))
 --- xproto-7.0.23/Xwindows.h
 +++ xproto-7.0.23/Xwindows.h
-@@ -29,29 +29,42 @@ The Open Group.
+@@ -29,28 +29,39 @@ The Open Group.
  /*
   * This header file has the sole purpose of allowing the inclusion of
   * windows.h without getting any name conflicts with X headers code, by
@@ -49,18 +60,9 @@
 +#define _NO_BOOL_TYPEDEF
 +#define BOOL WINBOOL
  #define INT32 wINT32
-+#define INT64 wINT64
-+#define LONG64 wLONG64
  #undef Status
  #define Status wStatus
- #define ATOM wATOM
-@@ -64,10 +77,18 @@ The Open Group.
- #undef BYTE
- #undef BOOL
- #undef INT32
-+#undef INT64
-+#undef LONG64
- #undef ATOM
+@@ -68,6 +79,12 @@ The Open Group.
  #undef FreeResource
  #undef CreateWindowA
  
@@ -75,7 +77,7 @@
  # undef RT_CURSOR
 --- xproto-7.0.23/Xwinsock.h
 +++ xproto-7.0.23/Xwinsock.h
-@@ -39,8 +39,16 @@ The Open Group.
+@@ -39,7 +39,13 @@ The Open Group.
  # undef XFree86Server
  #endif
  
@@ -88,20 +90,9 @@
 +#define _NO_BOOL_TYPEDEF
 +#define BOOL WINBOOL
  #define INT32 wINT32
-+#define INT64 wINT64
-+#define LONG64 wLONG64
  #undef Status
  #define Status wStatus
- #define ATOM wATOM
-@@ -52,12 +60,20 @@ The Open Group.
- #undef BYTE
- #undef BOOL
- #undef INT32
-+#undef INT64
-+#undef LONG64
- #undef ATOM
- #undef FreeResource
- #undef CreateWindowA
+@@ -58,6 +64,12 @@ The Open Group.
  #undef RT_FONT
  #undef RT_CURSOR
  

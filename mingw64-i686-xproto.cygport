@@ -3,7 +3,7 @@ inherit xorg cross
 
 NAME="mingw64-i686-xproto"
 VERSION=7.7
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="X11 protocol headers for Win32 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -30,14 +30,13 @@ SRC_URI="
 	http://xorg.freedesktop.org/archive/individual/proto/windowswmproto-1.0.4.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xcmiscproto-1.2.2.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xextproto-7.2.1.tar.bz2
-	http://xorg.freedesktop.org/archive/individual/proto/xf86bigfontproto-1.2.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xineramaproto-1.2.1.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xproto-7.0.23.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xproxymanagementprotocol-1.0.3.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/lib/xtrans-1.2.7.tar.bz2
 "
 SRC_DIR=.
-PATCH_URI="01-mingw64-BOOL.patch"
+PATCH_URI="01-mingw-w64.patch"
 
 src_compile() {
 	cd ${S}
