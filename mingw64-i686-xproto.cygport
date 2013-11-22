@@ -35,6 +35,7 @@ SRC_URI="
 	http://xorg.freedesktop.org/archive/individual/lib/xtrans-1.2.7.tar.bz2
 "
 SRC_DIR=.
+PATCH_URI="01-mingw.patch"
 
 src_compile() {
 	cd ${S}
