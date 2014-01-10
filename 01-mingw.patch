@@ -1,5 +1,5 @@
---- origsrc/xproto-7.0.24/Xos.h	2013-03-29 18:26:53.000000000 -0500
-+++ src/xproto-7.0.24/Xos.h	2013-11-21 16:25:10.042294700 -0600
+--- origsrc/xproto-7.0.25/Xos.h	2013-03-29 18:26:53.000000000 -0500
++++ src/xproto-7.0.25/Xos.h	2013-11-21 16:25:10.042294700 -0600
 @@ -76,7 +76,7 @@ in this Software without prior written a
   */
  # if defined(X_NOT_POSIX)
@@ -9,8 +9,8 @@
  #   include <unistd.h>
  #  endif
  #  ifdef WIN32
---- origsrc/xproto-7.0.24/Xthreads.h	2013-03-29 18:26:53.000000000 -0500
-+++ src/xproto-7.0.24/Xthreads.h	2013-11-21 18:02:09.241133900 -0600
+--- origsrc/xproto-7.0.25/Xthreads.h	2013-03-29 18:26:53.000000000 -0500
++++ src/xproto-7.0.25/Xthreads.h	2013-11-21 18:02:09.241133900 -0600
 @@ -107,6 +107,7 @@ typedef struct {
      struct _xthread_waiter *waiters;
  } xcondition_rec;

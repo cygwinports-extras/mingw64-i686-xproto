@@ -3,7 +3,7 @@ inherit xorg cross
 
 NAME="mingw64-i686-xproto"
 VERSION=7.7
-RELEASE=3
+RELEASE=4
 CATEGORY="Devel"
 SUMMARY="X11 protocol headers for Win32 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -18,9 +18,10 @@ SRC_URI="
 	http://xorg.freedesktop.org/archive/individual/proto/dmxproto-2.3.1.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/fixesproto-5.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/fontsproto-2.1.2.tar.bz2
-	http://xorg.freedesktop.org/archive/individual/proto/glproto-1.4.16.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/proto/glproto-1.4.17.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/inputproto-2.3.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/kbproto-1.0.6.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/proto/presentproto-1.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/randrproto-1.4.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/recordproto-1.14.2.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/renderproto-0.11.1.tar.bz2
@@ -29,10 +30,10 @@ SRC_URI="
 	http://xorg.freedesktop.org/archive/individual/proto/windowswmproto-1.0.4.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/data/xbitmaps-1.1.1.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xcmiscproto-1.2.2.tar.bz2
-	http://xorg.freedesktop.org/archive/individual/proto/xextproto-7.2.1.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/proto/xextproto-7.3.0.tar.bz2
 	http://xorg.freedesktop.org/archive/individual/proto/xineramaproto-1.2.1.tar.bz2
-	http://xorg.freedesktop.org/archive/individual/proto/xproto-7.0.24.tar.bz2
-	http://xorg.freedesktop.org/archive/individual/lib/xtrans-1.2.7.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/proto/xproto-7.0.25.tar.bz2
+	http://xorg.freedesktop.org/archive/individual/lib/xtrans-1.3.2.tar.bz2
 "
 SRC_DIR=.
 PATCH_URI="01-mingw.patch"
@@ -55,8 +56,14 @@ src_install() {
 	do
 		pushd ${B}/$d
 		cyginstall dist_doc_DATA= pkgconfigdir='$(libdir)/pkgconfig'
-		newdoc ${S}/$d/COPYING ${d%-*}.COPYING
-#		newdoc ${S}/$d/README ${d%-*}.README
+		if [ -f ${S}/$d/COPYING ]
+		then
+			newdoc ${S}/$d/COPYING ${d%-*}.COPYING
+		fi
+		if [ -f ${S}/$d/README ]
+		then
+			newdoc ${S}/$d/README ${d%-*}.README
+		fi
 		popd
 	done
 }
